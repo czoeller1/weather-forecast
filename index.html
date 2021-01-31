@@ -17,8 +17,8 @@
       <span class="navbar-brand mx-auto">Weather Dashboard</span>
     </header>
     <div class="container">
-      <div class="row">
-        <div class="col-3">
+      <div class="row g-5">
+        <div class="col-3 me-3">
           <div class="row gy-3 gx-0 align-items-end mb-3">
             <div class="col-10">
               <label for="cityInput" class="form-label"
@@ -36,7 +36,21 @@
             <button class="btn-light border p-3">Search</button>
           </div>
         </div>
-        <div class="col"></div>
+        <div class="col">
+          <div class="row p-3">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Denver (1/31/2021)</h2>
+                <p class="card-text">Temperature:</p>
+                <p class="card-text">Humidity:</p>
+                <p class="card-text">Wind Speed:</p>
+                <p class="card-text">
+                  UV Index: <button class="btn btn-danger">5.5</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script
