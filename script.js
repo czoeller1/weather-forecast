@@ -36,6 +36,7 @@ function loadWeather(city) {
       var wind = response.current.wind_speed; //mph
       var currHumidity = response.current.humidity; //%
       var uv = response.current.uvi;
+      $("#currCity").text(name);
       $("#currTemp").text(
         "Temperature: " + currTemp + " " + String.fromCharCode(176) + "F"
       );
@@ -90,3 +91,20 @@ function init() {
 }
 
 init();
+
+//<button class="btn-light border p-3">Search</button>; add in prevSearch class
+
+$(".searchBtn").click(function (event) {
+  event.preventDefault();
+
+  var city = $("#cityInput").val();
+  if (city == "") {
+    return;
+  }
+  localStorage.setItem("last-city", city);
+  var cityRecord = $("<button>").text(city);
+  cityRecord.addClass("btn-light border p-3");
+  $(".prevSearch").prepend(cityRecord);
+
+  loadWeather(city);
+});
