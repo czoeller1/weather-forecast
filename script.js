@@ -98,6 +98,7 @@ $(".searchBtn").click(function (event) {
   event.preventDefault();
 
   var city = $("#cityInput").val();
+  city = city.substr(0, 1).toUpperCase() + city.slice(1).toLowerCase();
   if (city == "") {
     return;
   }
