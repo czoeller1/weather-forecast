@@ -1,5 +1,7 @@
 var key = "1d5c835475ae3fad01ab4ae55f24d53a";
 
+var cities = [];
+
 function loadWeather(city) {
   var locData =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -19,8 +21,6 @@ function loadWeather(city) {
       key;
 
     $.ajax({ url: apiRef, method: "GET" }).then(function (response) {
-      console.log("Weather", response);
-
       var date = new Date(Number.parseInt(response.current.dt) * 1000);
       var name =
         city +
@@ -31,7 +31,7 @@ function loadWeather(city) {
         "/" +
         date.getFullYear() +
         ")";
-      console.log(name);
+
       var currTemp = response.current.temp; //f
       var wind = response.current.wind_speed; //mph
       var currHumidity = response.current.humidity; //%
@@ -68,7 +68,7 @@ function loadWeather(city) {
           date.getDate() +
           "/" +
           date.getFullYear();
-        console.log(name);
+
         $("#foreDate" + i).text(name);
         var currIcon =
           "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png";
@@ -88,6 +88,11 @@ function init() {
     city = "Denver";
   }
   loadWeather(city);
+  var cityRecord = $("<button>").text(city);
+  cityRecord.addClass("btn-light border p-3 record");
+  $(".prevSearch").prepend(cityRecord);
+  cityRecord.click(navigate);
+  cities.push(city);
 }
 
 init();
@@ -99,13 +104,25 @@ $(".searchBtn").click(function (event) {
 
   var city = $("#cityInput").val();
   city = city.substr(0, 1).toUpperCase() + city.slice(1).toLowerCase();
-  if (city == "") {
+  $("#cityInput").val("");
+  if (city == "" || cities.includes(city)) {
     return;
   }
+  cities.push(city);
   localStorage.setItem("last-city", city);
   var cityRecord = $("<button>").text(city);
-  cityRecord.addClass("btn-light border p-3");
+  cityRecord.addClass("btn-light border p-3 record");
   $(".prevSearch").prepend(cityRecord);
 
   loadWeather(city);
+  cityRecord.click(navigate);
 });
+
+function navigate() {
+  var target = $(this);
+  localStorage.setItem("last-city", target.text());
+  var navBtn = target.remove();
+  navBtn.click(navigate);
+  $(".prevSearch").prepend(navBtn);
+  loadWeather(target.text());
+}
