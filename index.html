@@ -47,11 +47,11 @@
                     alt=""
                   />
                 </h2>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-                <p class="card-text">Wind Speed:</p>
+                <p class="card-text" id="currTemp">Temperature:</p>
+                <p class="card-text" id="currHumidity">Humidity:</p>
+                <p class="card-text" id="currWind">Wind Speed:</p>
                 <p class="card-text">
-                  UV Index: <button class="btn btn-danger">5.5</button>
+                  UV Index: <span class="btn btn-danger" id="currUV">5.5</span>
                 </p>
               </div>
             </div>
@@ -123,5 +123,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
