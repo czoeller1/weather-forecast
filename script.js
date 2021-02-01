@@ -1,15 +1,5 @@
 var key = "1d5c835475ae3fad01ab4ae55f24d53a";
 
-function init() {
-  var city = localStorage.getItem("last-city");
-  if (city == null) {
-    city = "Denver";
-  }
-  loadWeather(city);
-}
-
-init();
-
 function loadWeather(city) {
   var locData =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -47,8 +37,56 @@ function loadWeather(city) {
       var currHumidity = response.current.humidity; //%
       var uv = response.current.uvi;
       $("#currTemp").text(
-        "Temperature: " + currTemp + String.fromCharCode(176) + "F"
+        "Temperature: " + currTemp + " " + String.fromCharCode(176) + "F"
       );
+      $("#currHumidity").text("Humidity: " + currHumidity + "%");
+      $("#currWind").text("Wind Speed: " + wind + " MPH");
+      $("#currUV").text(uv);
+      uv = Number.parseInt(uv);
+      if (uv < 3) {
+        $("#currUV").attr("class", "btn btn-success");
+      } else if (uv < 6) {
+        $("#currUV").attr("class", "btn btn-warning");
+      } else {
+        $("#currUV").attr("class", "btn btn-danger");
+      }
+
+      var currIcon =
+        "http://openweathermap.org/img/wn/" +
+        response.current.weather[0].icon +
+        "@2x.png";
+      $("#currIcon").attr("src", currIcon);
+
+      for (i = 1; i < 6; i++) {
+        var day = response.daily[i];
+        var date = new Date(Number.parseInt(day.dt) * 1000);
+        var name =
+          "" +
+          (date.getMonth() + 1) +
+          "/" +
+          date.getDate() +
+          "/" +
+          date.getFullYear();
+        console.log(name);
+        $("#foreDate" + i).text(name);
+        var currIcon =
+          "http://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png";
+        $("#foreIcon" + i).attr("src", currIcon);
+        $("#foreTemp" + i).text(
+          "Temp: " + day.temp.max + " " + String.fromCharCode(176) + "F"
+        );
+        $("#foreHumid" + i).text("Humidity: " + day.humidity + "%");
+      }
     });
   });
 }
+
+function init() {
+  var city = localStorage.getItem("last-city");
+  if (city == null) {
+    city = "Denver";
+  }
+  loadWeather(city);
+}
+
+init();

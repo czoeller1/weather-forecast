@@ -16,7 +16,7 @@
     <header class="navbar navbar-dark bg-dark">
       <span class="navbar-brand mx-auto">Weather Dashboard</span>
     </header>
-    <div class="container">
+    <div class="container mt-3">
       <div class="row g-5">
         <div class="col-3 me-3">
           <div class="row gy-3 gx-0 align-items-end mb-3">
@@ -44,7 +44,8 @@
                   Denver (1/31/2021)
                   <img
                     src=" http://openweathermap.org/img/wn/10d@2x.png"
-                    alt=""
+                    alt="weather icon"
+                    id="currIcon"
                   />
                 </h2>
                 <p class="card-text" id="currTemp">Temperature:</p>
@@ -57,60 +58,60 @@
             </div>
           </div>
           <h2>5-Day Forecast</h2>
-          <div class="row">
-            <div class="card forecast">
+          <div class="row 5day">
+            <div class="card forecast" data-day="1">
               <div class="card-body">
-                <h4 class="card-title">1/31/2021</h4>
+                <h4 class="card-title" id="foreDate1">1/31/2021</h4>
                 <img
                   src=" http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  id="foreIcon1"
                 />
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
+                <p class="card-text" id="foreTemp1">Temperature:</p>
+                <p class="card-text" id="foreHumid1">Humidity:</p>
               </div>
             </div>
-            <div class="card forecast">
+            <div class="card forecast" data-day="2">
               <div class="card-body">
-                <h4 class="card-title">1/31/2021</h4>
+                <h4 class="card-title" id="foreDate2">1/31/2021</h4>
                 <img
                   src=" http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  id="foreIcon2"
                 />
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
+                <p class="card-text" id="foreTemp2">Temperature:</p>
+                <p class="card-text" id="foreHumid2">Humidity:</p>
               </div>
             </div>
-            <div class="card forecast">
+            <div class="card forecast" data-day="3">
               <div class="card-body">
-                <h4 class="card-title">1/31/2021</h4>
+                <h4 class="card-title" id="foreDate3">1/31/2021</h4>
                 <img
                   src=" http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  id="foreIcon3"
                 />
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
+                <p class="card-text" id="foreTemp3">Temperature:</p>
+                <p class="card-text" id="foreHumid3">Humidity:</p>
               </div>
             </div>
-            <div class="card forecast">
+            <div class="card forecast" data-day="4">
               <div class="card-body">
-                <h4 class="card-title">1/31/2021</h4>
+                <h4 class="card-title" id="foreDate4">1/31/2021</h4>
                 <img
                   src=" http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  id="foreIcon4"
                 />
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
+                <p class="card-text" id="foreTemp4">Temperature:</p>
+                <p class="card-text" id="foreHumid4">Humidity:</p>
               </div>
             </div>
-            <div class="card forecast">
+            <div class="card forecast" data-day="5">
               <div class="card-body">
-                <h4 class="card-title">1/31/2021</h4>
+                <h4 class="card-title" id="foreDate5">1/31/2021</h4>
                 <img
                   src=" http://openweathermap.org/img/wn/10d@2x.png"
-                  alt=""
+                  id="foreIcon1"
                 />
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
+                <p class="card-text" id="foreTemp5">Temperature:</p>
+                <p class="card-text" id="foreHumid5">Humidity:</p>
               </div>
             </div>
           </div>
